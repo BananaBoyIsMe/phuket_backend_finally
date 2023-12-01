@@ -45,7 +45,7 @@ const oneRatingMerch = (id, result) => {
 }
 
 const topRatingAttract = (result) => {
-  sql.query("SELECT AVG(r.rating) AS rating, COUNT(r.rating) AS num_rating, a.id AS att_id FROM ratings r INNER JOIN attractions a ON r.att_id = a.id GROUP BY a.id ORDER BY rating DESC", (err, res) => {
+  sql.query("SELECT AVG(r.rating) AS rating, COUNT(r.rating) AS num_rating, a.id AS att_id, a.name AS att_name FROM ratings r INNER JOIN attractions a ON r.att_id = a.id GROUP BY a.id ORDER BY rating DESC", (err, res) => {
     if (err) {
       console.log("Query error:", err);
       result(err, null);
@@ -56,7 +56,7 @@ const topRatingAttract = (result) => {
 }
 
 const topRatingMerch = (result) => {
-  sql.query("SELECT AVG(r.rating) AS rating, COUNT(r.rating) AS num_rating, m.id AS merch_id FROM ratings r INNER JOIN merchandises m ON r.merch_id = m.id GROUP BY m.id ORDER BY rating DESC", (err, res) => {
+  sql.query("SELECT AVG(r.rating) AS rating, COUNT(r.rating) AS num_rating, m.id AS merch_id, m.name AS merch_name FROM ratings r INNER JOIN merchandises m ON r.merch_id = m.id GROUP BY m.id ORDER BY rating DESC", (err, res) => {
     if (err) {
       console.log("Query error:", err);
       result(err, null);
