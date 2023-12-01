@@ -66,16 +66,16 @@ const topRatingMerch = (result) => {
   });
 }
 
-const topThree = (limit, result) => {
-  sql.query("SELECT merch_id, name, rating, img, url FROM merchandises ORDER BY rating DESC LIMIT " + limit + "", (err, res) => {
-    if (err) {
-      console.log("Query error:", err);
-      result(err, null);
-      return;
-    }
-    result(null, res);
-  });
-}
+// const topThree = (limit, result) => {
+//   sql.query("SELECT merch_id, name, rating, img, url FROM merchandises ORDER BY rating DESC LIMIT " + limit + "", (err, res) => {
+//     if (err) {
+//       console.log("Query error:", err);
+//       result(err, null);
+//       return;
+//     }
+//     result(null, res);
+//   });
+// }
 
 const everything = (result) => {
   sql.query("SELECT COUNT(id) AS 'num_users' FROM `users` WHERE 1", (err, res) => {
@@ -97,6 +97,6 @@ module.exports = {
   topRatingAttract,
   topRatingMerch,
 
-  topThree,
+  // topThree,
   everything
 };
